@@ -179,7 +179,6 @@ def main():
     
         if is_validated_english_sentence(string):
             string = get_cleaned_english_sentence(string)
-            print(string)
             print(encoding_sentence(string))
             continue   
         elif is_validated_morse_code(string):   
@@ -191,7 +190,6 @@ def main():
     # ==================================
     print("Good Bye")
     print("Morse Code Program Finished!!")
-    
 
 
 if __name__ == "__main__":
