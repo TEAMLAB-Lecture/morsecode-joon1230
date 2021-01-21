@@ -96,7 +96,7 @@ def get_cleaned_english_sentence(raw_english_sentence):
     """
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
-    result = re.sub('[^a-zA-Z]+',' ',user_input)
+    result = re.sub('[^a-zA-Z]+',' ',raw_english_sentence).upper()
     return result
     # ================================
 
@@ -126,8 +126,7 @@ def encoding_character(english_character):
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
     morse_code_dict = get_morse_code_dict()
-
-    return morse_code_dict.get( english_character.upper() , ' ')
+    return morse_code_dict.get( english_character, '' )
     # ==================================
 
 
@@ -159,10 +158,9 @@ def encoding_sentence(english_sentence):
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
     result = ""
     for c in english_sentence:
-        result += encoding_character(c) + ' '
+        result += encoding_character(c)+' '
     return result.strip()
     # ==================================
-
 
 def main():
     import re
@@ -180,9 +178,11 @@ def main():
     
     
         if is_validated_english_sentence(string):
+            string = get_cleaned_english_sentence(string)
+            print(string)
             print(encoding_sentence(string))
             continue   
-        elif is_validated_morse_code(string):
+        elif is_validated_morse_code(string):   
             print(decoding_sentence(string))
             continue
         else:
@@ -191,6 +191,9 @@ def main():
     # ==================================
     print("Good Bye")
     print("Morse Code Program Finished!!")
+
+main()
+
 
 if __name__ == "__main__":
     main()
