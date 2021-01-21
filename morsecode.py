@@ -125,7 +125,6 @@ def encoding_character(english_character):
     """
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
-    english_character = get_cleaned_english_sentence(english_character)
     morse_code_dict = get_morse_code_dict()
     return morse_code_dict.get( english_character, '' )
     # ==================================
@@ -158,6 +157,7 @@ def encoding_sentence(english_sentence):
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
     result = ""
+    english_sentence = get_cleaned_english_sentence(english_sentence)
     for c in ' '.join(english_sentence.split()):
         result += encoding_character(c.upper())+' '
     return result.strip()
@@ -189,7 +189,6 @@ def main():
     # ==================================
     print("Good Bye")
     print("Morse Code Program Finished!!")
-
 
 
 
