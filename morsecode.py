@@ -157,7 +157,7 @@ def encoding_sentence(english_sentence):
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
     result = ""
-    for c in english_sentence:
+    for c in ' '.join(english_sentence.split()):
         result += encoding_character(c.upper())+' '
     return result.strip()
     # ==================================
@@ -179,6 +179,7 @@ def main():
     
         if is_validated_english_sentence(string):
             string = get_cleaned_english_sentence(string)
+
             print(encoding_sentence(string))
             continue   
         elif is_validated_morse_code(string):   
@@ -190,6 +191,7 @@ def main():
     # ==================================
     print("Good Bye")
     print("Morse Code Program Finished!!")
+
 
 
 if __name__ == "__main__":
